@@ -86,7 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function openPdf(pdfFile) {
         const title = documentTitles[pdfFile] || 'Văn bản';
         pdfTitle.textContent = title;
-        pdfFrame.src = pdfFile;
+
+        // Thêm tham số hiển thị để mặc định fit page và cho phép zoom
+        // Nếu mở PDF trực tiếp, nhiều trình duyệt mobile sẽ dùng viewer tích hợp hỗ trợ pinch-zoom
+        const encoded = encodeURI(pdfFile);
+        const viewerUrl = `${encoded}#zoom=page-fit`;
+        pdfFrame.src = viewerUrl;
         pdfModal.classList.add('active');
         document.body.style.overflow = 'hidden';
         console.log('📄 Đang mở:', title);
