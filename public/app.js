@@ -2,20 +2,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const iframe = document.getElementById('youtubeVideo');
     
-    // Thêm các tham số bổ sung cho video khi load
-    const videoId = 'FfWQOxWCmuY';
-    const params = new URLSearchParams({
-        rel: '0',
-        modestbranding: '1',
-        showinfo: '0',
-        controls: '1',
-        autoplay: '0',
-        enablejsapi: '1',
-        origin: window.location.origin
-    });
-    
-    // Cập nhật src với params
-    iframe.src = `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
+    // Không cần thay đổi src vì đã có đầy đủ params trong HTML
+    console.log('✅ Video src đã được cấu hình sẵn trong HTML');
     
     // Log khi video load thành công
     iframe.addEventListener('load', () => {
@@ -138,16 +126,10 @@ window.addEventListener('resize', () => {
     }, 250);
 });
 
-// Orientation change
+// Orientation change - removed iframe reload to prevent layout changes
 window.addEventListener('orientationchange', () => {
     console.log('🔄 Orientation changed');
-    // Reload iframe để đảm bảo video hiển thị đúng
-    const iframe = document.getElementById('youtubeVideo');
-    const currentSrc = iframe.src;
-    iframe.src = '';
-    setTimeout(() => {
-        iframe.src = currentSrc;
-    }, 100);
+    // Chỉ log orientation change, không reload iframe để tránh giật giao diện
 });
 
 // Prevent context menu on video (optional)
