@@ -87,10 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const title = documentTitles[pdfFile] || 'Văn bản';
         pdfTitle.textContent = title;
 
-        // Thêm tham số hiển thị để mặc định fit page và cho phép zoom
-        // Nếu mở PDF trực tiếp, nhiều trình duyệt mobile sẽ dùng viewer tích hợp hỗ trợ pinch-zoom
+        // Mặc định fit toàn trang và ẩn toolbar viewer để không che phần đầu trang
+        // Hầu hết trình duyệt di động vẫn cho phép pinch-zoom bình thường
         const encoded = encodeURI(pdfFile);
-        const viewerUrl = `${encoded}#zoom=page-fit`;
+        const viewerUrl = `${encoded}#view=Fit&toolbar=0&navpanes=0&statusbar=0`;
         pdfFrame.src = viewerUrl;
         pdfModal.classList.add('active');
         document.body.style.overflow = 'hidden';
