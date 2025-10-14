@@ -15,7 +15,7 @@
             <div class="video-wrapper">
                 <iframe
                     id="youtubeVideo"
-                    src="https://www.youtube.com/embed/FfWQOxWCmuY?rel=0&modestbranding=1&showinfo=0&controls=1&autoplay=0&enablejsapi=1"
+                    src="https://www.youtube.com/embed/FfWQOxWCmuY?rel=0&modestbranding=1&showinfo=0&controls=1&autoplay=1&playsinline=1&enablejsapi=1"
                     title="Hội nghị Sư Đoàn 324"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -125,6 +125,40 @@
         </div>
     </div>
 
+    <script>
+        // Kiểm tra xác thực trước khi hiển thị trang
+        function checkAuthentication() {
+            const isAuthenticated = localStorage.getItem('isAuthenticated');
+            const loginTime = localStorage.getItem('loginTime');
+            
+            // Kiểm tra nếu chưa đăng nhập hoặc đăng nhập quá lâu (24 giờ)
+            if (!isAuthenticated || !loginTime) {
+                redirectToLogin();
+                return;
+            }
+            
+            const currentTime = new Date().getTime();
+            const timeDiff = currentTime - parseInt(loginTime);
+            const hoursDiff = timeDiff / (1000 * 60 * 60);
+            
+            // Nếu đăng nhập quá 24 giờ, yêu cầu đăng nhập lại
+            if (hoursDiff > 24) {
+                localStorage.removeItem('isAuthenticated');
+                localStorage.removeItem('loginTime');
+                redirectToLogin();
+                return;
+            }
+        }
+        
+        function redirectToLogin() {
+            window.location.href = 'login.html';
+        }
+        
+        // Kiểm tra xác thực khi trang load
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuthentication();
+        });
+    </script>
     <script src="app.js"></script>
 </body>
 </html>

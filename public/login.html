@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Đăng nhập - Hội nghị Sư Đoàn 324">
+    <meta name="theme-color" content="#0033a0">
+    <title>Đăng nhập - Hội nghị Sư Đoàn 324</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('signin.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            padding-top: calc(50vh - 380px);
+        }
+
+        .login-container {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            max-width: 320px;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid rgba(204, 204, 204, 0.6);
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #0033a0;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 0 3px rgba(0, 51, 160, 0.1);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #0033a0, #0044cc);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 16px;
+            box-shadow: 0 4px 12px rgba(0, 51, 160, 0.3);
+        }
+
+        .login-btn:hover {
+            background: linear-gradient(135deg, #002880, #0033a0);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(0, 51, 160, 0.4);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(0, 51, 160, 0.3);
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+            text-align: center;
+        }
+
+        .success-message {
+            color: #28a745;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            .login-title {
+                font-size: 20px;
+            }
+            
+            .form-input {
+                font-size: 16px;
+                padding: 12px;
+            }
+            
+            .login-btn {
+                font-size: 18px;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .login-container {
+                padding: 20px 15px;
+            }
+            
+            .login-title {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <form id="loginForm">
+            <div class="form-group">
+                <input 
+                    type="password" 
+                    id="password" 
+                    class="form-input" 
+                    placeholder="Nhập mật khẩu"
+                    required
+                >
+            </div>
+            
+            <button type="submit" class="login-btn">ĐĂNG NHẬP</button>
+            
+            <div class="error-message" id="errorMessage">
+                Mật khẩu không đúng. Vui lòng thử lại.
+            </div>
+            
+            <div class="success-message" id="successMessage">
+                Đăng nhập thành công! Đang chuyển hướng...
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Mật khẩu mặc định (có thể thay đổi)
+        const CORRECT_PASSWORD = "01071995";
+        
+        const loginForm = document.getElementById('loginForm');
+        const passwordInput = document.getElementById('password');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = passwordInput.value.trim();
+            
+            // Ẩn thông báo cũ
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+            
+            if (password === CORRECT_PASSWORD) {
+                // Hiển thị thông báo thành công
+                successMessage.style.display = 'block';
+                
+                // Lưu trạng thái đăng nhập vào localStorage
+                localStorage.setItem('isAuthenticated', 'true');
+                localStorage.setItem('loginTime', new Date().getTime().toString());
+                
+                // Chuyển hướng sau 1.5 giây
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1500);
+            } else {
+                // Hiển thị thông báo lỗi
+                errorMessage.style.display = 'block';
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+        });
+
+        // Focus vào input mật khẩu khi trang load
+        window.addEventListener('load', function() {
+            passwordInput.focus();
+        });
+
+        // Xử lý phím Enter
+        passwordInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                loginForm.dispatchEvent(new Event('submit'));
+            }
+        });
+    </script>
+</body>
+</html>
