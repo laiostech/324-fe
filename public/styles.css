@@ -235,7 +235,7 @@ body {
     transform-origin: top left;
 }
 
-/* Submenu Modal for KY YEU */
+/* Submenu Modals - áp dụng cho tất cả các submenu */
 .submenu-modal {
     display: none;
     position: fixed;
@@ -390,6 +390,10 @@ body {
 
 /* Tablet và lớn hơn: 2 cột buttons */
 @media (min-width: 768px) {
+    :root {
+        --hero-offset: 100px; /* Tăng nhẹ cho tablet */
+    }
+
     body {
         background-attachment: fixed;
     }
@@ -406,6 +410,10 @@ body {
 
 /* Desktop: Tối ưu cho màn hình lớn */
 @media (min-width: 1024px) {
+    :root {
+        --hero-offset: 250px; /* Tăng khoảng cách cho laptop/desktop */
+    }
+
     .document-buttons {
         max-width: 900px;
     }
@@ -417,6 +425,10 @@ body {
 
 /* Large Desktop */
 @media (min-width: 1440px) {
+    :root {
+        --hero-offset: 300px; /* Tăng thêm khoảng cách cho màn hình rất lớn */
+    }
+
     .document-buttons {
         max-width: 1000px;
     }

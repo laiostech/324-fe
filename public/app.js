@@ -54,9 +54,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const pdfTitle = document.getElementById('pdfTitle');
     const closeModal = document.getElementById('closeModal');
 
-    // Submenu (KY YEU)
+    // Submenus
     const kyYeuSubmenu = document.getElementById('kyYeuSubmenu');
     const closeSubmenu = document.getElementById('closeSubmenu');
+
+    const suDoanSubmenu = document.getElementById('suDoanSubmenu');
+    const closeSuDoanSubmenu = document.getElementById('closeSuDoanSubmenu');
+
+    const quanKhuSubmenu = document.getElementById('quanKhuSubmenu');
+    const closeQuanKhuSubmenu = document.getElementById('closeQuanKhuSubmenu');
+
+    const trungUongSubmenu = document.getElementById('trungUongSubmenu');
+    const closeTrungUongSubmenu = document.getElementById('closeTrungUongSubmenu');
 
     // Mapping tên văn bản
     const documentTitles = {
@@ -64,7 +73,19 @@ document.addEventListener('DOMContentLoaded', () => {
         'van_ban_qutw.pdf': 'VĂN BẢN QUTW, BQP',
         'bao_cao_tong_ket_quan_khu.pdf': 'BÁO CÁO TỔNG KẾT QUÂN KHU',
         'bao_cao_tong_ket_su_doan.pdf': 'BÁO CÁO TỔNG KẾT SƯ ĐOÀN',
-        'ky_yeu.pdf': 'KỶ YẾU'
+        'ky_yeu.pdf': 'KỶ YẾU',
+        'su_doan/su_doan_1.pdf': 'VĂN BẢN 1 - THAM LUẬN SƯ ĐOÀN',
+        'su_doan/su_doan_2.pdf': 'VĂN BẢN 2 - THAM LUẬN SƯ ĐOÀN',
+        'su_doan/su_doan_3.pdf': 'VĂN BẢN 3 - THAM LUẬN SƯ ĐOÀN',
+        'su_doan/su_doan_4.pdf': 'VĂN BẢN 4 - THAM LUẬN SƯ ĐOÀN',
+        'su_doan/su_doan_5.pdf': 'VĂN BẢN 5 - THAM LUẬN SƯ ĐOÀN',
+        'quan_khu/quan_khu_1.pdf': 'VĂN BẢN 1 - THAM LUẬN QUÂN KHU',
+        'quan_khu/quan_khu_2.pdf': 'VĂN BẢN 2 - THAM LUẬN QUÂN KHU',
+        'quan_khu/quan_khu_3.pdf': 'VĂN BẢN 3 - THAM LUẬN QUÂN KHU',
+        'trung_uong/tw_1.pdf': 'VĂN BẢN 1 - THAM LUẬN TRUNG ƯƠNG',
+        'trung_uong/tw_2.pdf': 'VĂN BẢN 2 - THAM LUẬN TRUNG ƯƠNG',
+        'trung_uong/tw_3.pdf': 'VĂN BẢN 3 - THAM LUẬN TRUNG ƯƠNG',
+        'trung_uong/tw_4.pdf': 'VĂN BẢN 4 - THAM LUẬN TRUNG ƯƠNG'
     };
 
     // Xử lý click vào nút văn bản
@@ -72,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             const pdfFile = button.getAttribute('data-pdf');
 
-            // Nếu là KỶ YẾU: mở submenu thay vì mở PDF trực tiếp
+            // Mở KỶ YẾU submenu
             if (pdfFile === 'ky_yeu.pdf') {
                 kyYeuSubmenu.classList.add('active');
                 document.body.style.overflow = 'hidden';
@@ -113,17 +134,66 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Close submenu
+    // Close KY YEU submenu
     function closeKyYeuSubmenu() {
         kyYeuSubmenu.classList.remove('active');
         document.body.style.overflow = '';
     }
 
-    closeSubmenu?.addEventListener('click', closeKyYeuSubmenu);
+    // Close SU DOAN submenu
+    function closeSuDoanSubmenuFunc() {
+        suDoanSubmenu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 
+    // Close QUAN KHU submenu
+    function closeQuanKhuSubmenuFunc() {
+        quanKhuSubmenu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Close TRUNG UONG submenu
+    function closeTrungUongSubmenuFunc() {
+        trungUongSubmenu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Close all submenus function
+    function closeAllSubmenus() {
+        closeKyYeuSubmenu();
+        closeSuDoanSubmenuFunc();
+        closeQuanKhuSubmenuFunc();
+        closeTrungUongSubmenuFunc();
+    }
+
+    // Event listeners for close buttons
+    closeSubmenu?.addEventListener('click', closeKyYeuSubmenu);
+    closeSuDoanSubmenu?.addEventListener('click', closeSuDoanSubmenuFunc);
+    closeQuanKhuSubmenu?.addEventListener('click', closeQuanKhuSubmenuFunc);
+    closeTrungUongSubmenu?.addEventListener('click', closeTrungUongSubmenuFunc);
+
+    // Event listeners for clicking outside
     kyYeuSubmenu?.addEventListener('click', (e) => {
         if (e.target === kyYeuSubmenu) {
             closeKyYeuSubmenu();
+        }
+    });
+
+    suDoanSubmenu?.addEventListener('click', (e) => {
+        if (e.target === suDoanSubmenu) {
+            closeSuDoanSubmenuFunc();
+        }
+    });
+
+    quanKhuSubmenu?.addEventListener('click', (e) => {
+        if (e.target === quanKhuSubmenu) {
+            closeQuanKhuSubmenuFunc();
+        }
+    });
+
+    trungUongSubmenu?.addEventListener('click', (e) => {
+        if (e.target === trungUongSubmenu) {
+            closeTrungUongSubmenuFunc();
         }
     });
 
@@ -131,15 +201,48 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.submenu-btn')?.forEach(btn => {
         btn.addEventListener('click', () => {
             const pdf = btn.getAttribute('data-pdf');
-            closeKyYeuSubmenu();
-            openPdf(pdf);
+            const submenu = btn.getAttribute('data-submenu');
+
+            // Đóng tất cả các submenu hiện tại
+            closeAllSubmenus();
+
+            if (pdf) {
+                // Nếu có data-pdf, mở PDF
+                openPdf(pdf);
+            } else if (submenu) {
+                // Nếu có data-submenu, mở submenu tương ứng
+                switch(submenu) {
+                    case 'suDoan':
+                        suDoanSubmenu.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                        break;
+                    case 'quanKhu':
+                        quanKhuSubmenu.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                        break;
+                    case 'trungUong':
+                        trungUongSubmenu.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                        break;
+                }
+            }
         });
     });
 
     // Đóng khi nhấn ESC
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && pdfModal.classList.contains('active')) {
-            closePdfModal();
+        if (e.key === 'Escape') {
+            if (pdfModal.classList.contains('active')) {
+                closePdfModal();
+            } else if (kyYeuSubmenu.classList.contains('active')) {
+                closeKyYeuSubmenu();
+            } else if (suDoanSubmenu.classList.contains('active')) {
+                closeSuDoanSubmenuFunc();
+            } else if (quanKhuSubmenu.classList.contains('active')) {
+                closeQuanKhuSubmenuFunc();
+            } else if (trungUongSubmenu.classList.contains('active')) {
+                closeTrungUongSubmenuFunc();
+            }
         }
     });
 
