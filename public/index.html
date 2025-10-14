@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Mobile-first website demo">
+    <meta name="theme-color" content="#6366f1">
+    <title>324 Mobile App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">📱 324 App</h1>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav" id="mainNav">
+        <ul class="nav-list">
+            <li><a href="#home" class="nav-link active">🏠 Trang chủ</a></li>
+            <li><a href="#products" class="nav-link">🛍️ Sản phẩm</a></li>
+            <li><a href="#users" class="nav-link">👥 Người dùng</a></li>
+            <li><a href="#about" class="nav-link">ℹ️ Giới thiệu</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">Chào mừng đến với 324</h2>
+                <p class="hero-subtitle">Ứng dụng mobile hiện đại với công nghệ tiên tiến</p>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="productCount">0</div>
+                        <div class="stat-label">Sản phẩm</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="userCount">0</div>
+                        <div class="stat-label">Người dùng</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🛍️ Sản phẩm nổi bật</h2>
+                <button class="refresh-btn" id="refreshProducts">🔄</button>
+            </div>
+            <div class="loading" id="productsLoading">Đang tải...</div>
+            <div class="product-grid" id="productGrid"></div>
+        </div>
+    </section>
+
+    <!-- Users Section -->
+    <section class="section" id="users">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">👥 Người dùng</h2>
+                <button class="refresh-btn" id="refreshUsers">🔄</button>
+            </div>
+            <div class="loading" id="usersLoading">Đang tải...</div>
+            <div class="user-list" id="userList"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section section-light" id="about">
+        <div class="container">
+            <h2 class="section-title">ℹ️ Giới thiệu</h2>
+            <div class="about-content">
+                <div class="info-card">
+                    <div class="info-icon">🚀</div>
+                    <h3>Công nghệ hiện đại</h3>
+                    <p>Xây dựng với NestJS Backend và TypeScript Node.js Frontend</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">📱</div>
+                    <h3>Mobile-First</h3>
+                    <p>Thiết kế tối ưu cho điện thoại di động, trải nghiệm mượt mà</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">⚡</div>
+                    <h3>Hiệu suất cao</h3>
+                    <p>Tải nhanh, phản hồi tức thì, tiết kiệm dữ liệu</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🔒</div>
+                    <h3>Bảo mật</h3>
+                    <p>Đảm bảo an toàn dữ liệu và quyền riêng tư người dùng</p>
+                </div>
+            </div>
+            <div class="tech-stack">
+                <h3>Tech Stack</h3>
+                <div class="badges">
+                    <span class="badge">NestJS</span>
+                    <span class="badge">TypeScript</span>
+                    <span class="badge">Node.js</span>
+                    <span class="badge">Express</span>
+                    <span class="badge">REST API</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>324 App</h4>
+                    <p>Mobile-first web application</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liên kết</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Trang chủ</a></li>
+                        <li><a href="#products">Sản phẩm</a></li>
+                        <li><a href="#users">Người dùng</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 324 App. All rights reserved.</p>
+                <div class="server-status">
+                    <span class="status-dot" id="statusDot"></span>
+                    <span id="serverStatus">Đang kiểm tra...</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <nav class="bottom-nav">
+        <a href="#home" class="bottom-nav-item active" data-section="home">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Trang chủ</span>
+        </a>
+        <a href="#products" class="bottom-nav-item" data-section="products">
+            <span class="nav-icon">🛍️</span>
+            <span class="nav-label">Sản phẩm</span>
+        </a>
+        <a href="#users" class="bottom-nav-item" data-section="users">
+            <span class="nav-icon">👥</span>
+            <span class="nav-label">Người dùng</span>
+        </a>
+        <a href="#about" class="bottom-nav-item" data-section="about">
+            <span class="nav-icon">ℹ️</span>
+            <span class="nav-label">Thông tin</span>
+        </a>
+    </nav>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
