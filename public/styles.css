@@ -10,6 +10,10 @@ html {
     width: 100%;
 }
 
+:root {
+    --hero-offset: 50px; /* adjust this to push content further below the top of the background */
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -18,7 +22,7 @@ body {
     min-height: 100vh;
     background-image: url('background.png');
     background-size: cover;
-    background-position: center center;
+    background-position: top center; /* keep header artwork visible, crop sides/bottom instead */
     background-repeat: no-repeat;
     background-attachment: scroll;
 }
@@ -38,6 +42,7 @@ body {
     padding: clamp(32px, 12vh, 120px) clamp(18px, 6vw, 48px) clamp(28px, 10vh, 64px);
     box-sizing: border-box;
     overflow-x: hidden;
+    padding-top: calc(clamp(32px, 12vh, 120px) + var(--hero-offset));
 }
 
 /* Video Container - Responsive */
@@ -224,6 +229,108 @@ body {
     border: none;
 }
 
+/* Submenu Modal for KY YEU */
+.submenu-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    padding: clamp(10px, 3vw, 20px);
+}
+
+.submenu-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.25s ease;
+}
+
+.submenu-content {
+    background: #ffffff;
+    width: 100%;
+    max-width: 720px;
+    border-radius: clamp(10px, 2vw, 14px);
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.submenu-header {
+    background: linear-gradient(135deg, #0033a0, #0055d4);
+    color: #fff;
+    padding: clamp(12px, 3vw, 16px) clamp(16px, 4vw, 24px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.submenu-title {
+    margin: 0;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-weight: 600;
+}
+
+.submenu-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: clamp(1.6rem, 4vw, 1.8rem);
+    width: clamp(34px, 8vw, 38px);
+    height: clamp(34px, 8vw, 38px);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.submenu-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.submenu-body {
+    padding: clamp(16px, 3vw, 24px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(12px, 3vw, 18px);
+}
+
+.submenu-btn {
+    background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(230,240,255,0.95));
+    border: 1px solid rgba(0, 51, 160, 0.15);
+    color: #0b1b57;
+    font-weight: 600;
+    padding: clamp(14px, 3.6vw, 18px);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: center;
+}
+
+.submenu-btn:hover,
+.submenu-btn:focus-visible {
+    background: linear-gradient(135deg, rgba(255,255,255,1), rgba(222,236,255,1));
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0,36,102,0.18);
+    outline: 3px solid rgba(0, 51, 160, 0.25);
+    outline-offset: 3px;
+}
+
+@media (min-width: 768px) {
+    .submenu-body {
+        grid-template-columns: 1fr; /* vẫn 1 cột để dễ bấm */
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
 /* Animations */
 @keyframes fadeIn {
     from {
@@ -252,6 +359,7 @@ body {
     .background-wrapper {
         padding: clamp(24px, 18vw, 56px) clamp(14px, 6vw, 26px) clamp(20px, 14vh, 48px);
         gap: clamp(16px, 6vh, 28px);
+        padding-top: calc(clamp(24px, 18vw, 56px) + var(--hero-offset));
     }
 
     .video-container {
@@ -312,8 +420,8 @@ body {
 /* Landscape Mode cho Mobile */
 @media (max-width: 767px) and (orientation: landscape) {
     .background-wrapper {
-        padding-top: clamp(18px, 6vh, 48px);
         gap: clamp(12px, 6vh, 24px);
+        padding-top: calc(clamp(18px, 6vh, 48px) + var(--hero-offset));
     }
 
     .video-container {

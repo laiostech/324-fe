@@ -54,33 +54,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const pdfTitle = document.getElementById('pdfTitle');
     const closeModal = document.getElementById('closeModal');
 
+    // Submenu (KY YEU)
+    const kyYeuSubmenu = document.getElementById('kyYeuSubmenu');
+    const closeSubmenu = document.getElementById('closeSubmenu');
+
     // Mapping tên văn bản
     const documentTitles = {
+        'chuong_trinh_hoi_nghi.pdf': 'CHƯƠNG TRÌNH HỘI NGHỊ',
         'van_ban_qutw.pdf': 'VĂN BẢN QUTW, BQP',
-        'van_ban_quan_khu.pdf': 'VĂN BẢN QUÂN KHU',
-        'van_ban_su_doan.pdf': 'VĂN BẢN SƯ ĐOÀN',
-        'van_kien_hoi_nghi.pdf': 'VĂN KIỆN HỘI NGHỊ'
+        'bao_cao_tong_ket_quan_khu.pdf': 'BÁO CÁO TỔNG KẾT QUÂN KHU',
+        'bao_cao_tong_ket_su_doan.pdf': 'BÁO CÁO TỔNG KẾT SƯ ĐOÀN',
+        'ky_yeu.pdf': 'KỶ YẾU'
     };
 
     // Xử lý click vào nút văn bản
     pdfButtons.forEach(button => {
         button.addEventListener('click', () => {
             const pdfFile = button.getAttribute('data-pdf');
-            const title = documentTitles[pdfFile] || 'Văn bản';
-            
-            // Cập nhật title
-            pdfTitle.textContent = title;
-            
-            // Load PDF vào iframe
-            pdfFrame.src = pdfFile;
-            
-            // Hiển thị modal
-            pdfModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            
-            console.log('📄 Đang mở:', title);
+
+            // Nếu là KỶ YẾU: mở submenu thay vì mở PDF trực tiếp
+            if (pdfFile === 'ky_yeu.pdf') {
+                kyYeuSubmenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                return;
+            }
+
+            openPdf(pdfFile);
         });
     });
+
+    function openPdf(pdfFile) {
+        const title = documentTitles[pdfFile] || 'Văn bản';
+        pdfTitle.textContent = title;
+        pdfFrame.src = pdfFile;
+        pdfModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        console.log('📄 Đang mở:', title);
+    }
 
     // Đóng modal
     function closePdfModal() {
@@ -96,6 +106,29 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === pdfModal) {
             closePdfModal();
         }
+    });
+
+    // Close submenu
+    function closeKyYeuSubmenu() {
+        kyYeuSubmenu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    closeSubmenu?.addEventListener('click', closeKyYeuSubmenu);
+
+    kyYeuSubmenu?.addEventListener('click', (e) => {
+        if (e.target === kyYeuSubmenu) {
+            closeKyYeuSubmenu();
+        }
+    });
+
+    // Handle submenu item clicks
+    document.querySelectorAll('.submenu-btn')?.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const pdf = btn.getAttribute('data-pdf');
+            closeKyYeuSubmenu();
+            openPdf(pdf);
+        });
     });
 
     // Đóng khi nhấn ESC

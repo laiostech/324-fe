@@ -26,21 +26,25 @@
 
         <!-- Document Buttons - Nằm dưới video 60px -->
         <div class="document-buttons">
+            <button class="doc-btn" data-pdf="chuong_trinh_hoi_nghi.pdf">
+                <span class="doc-icon">📄</span>
+                <span class="doc-text">CHƯƠNG TRÌNH HỘI NGHỊ</span>
+            </button>
             <button class="doc-btn" data-pdf="van_ban_qutw.pdf">
                 <span class="doc-icon">📄</span>
                 <span class="doc-text">VĂN BẢN QUTW, BQP</span>
             </button>
-            <button class="doc-btn" data-pdf="van_ban_quan_khu.pdf">
+            <button class="doc-btn" data-pdf="bao_cao_tong_ket_quan_khu.pdf">
                 <span class="doc-icon">📄</span>
-                <span class="doc-text">VĂN BẢN QUÂN KHU</span>
+                <span class="doc-text">BÁO CÁO TỔNG KẾT QUÂN KHU</span>
             </button>
-            <button class="doc-btn" data-pdf="van_ban_su_doan.pdf">
+            <button class="doc-btn" data-pdf="bao_cao_tong_ket_su_doan.pdf">
                 <span class="doc-icon">📄</span>
-                <span class="doc-text">VĂN BẢN SƯ ĐOÀN</span>
+                <span class="doc-text">BÁO CÁO TỔNG KẾT SƯ ĐOÀN</span>
             </button>
-            <button class="doc-btn" data-pdf="van_kien_hoi_nghi.pdf">
+            <button class="doc-btn" data-pdf="ky_yeu.pdf">
                 <span class="doc-icon">📄</span>
-                <span class="doc-text">VĂN KIỆN HỘI NGHỊ</span>
+                <span class="doc-text">KỶ YẾU</span>
             </button>
         </div>
     </div>
@@ -54,6 +58,21 @@
             </div>
             <div class="pdf-viewer">
                 <iframe id="pdfFrame" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- KY YEU Submenu Modal -->
+    <div class="submenu-modal" id="kyYeuSubmenu">
+        <div class="submenu-content">
+            <div class="submenu-header">
+                <h3 class="submenu-title">KỶ YẾU</h3>
+                <button class="submenu-close" id="closeSubmenu">&times;</button>
+            </div>
+            <div class="submenu-body">
+                <button class="submenu-btn" data-pdf="ky_yeu_su_doan.pdf">THAM LUẬN ĐÓNG GÓP SƯ ĐOÀN</button>
+                <button class="submenu-btn" data-pdf="ky_yeu_quan_khu.pdf">THAM LUẬN ĐÓNG GÓP QUÂN KHU</button>
+                <button class="submenu-btn" data-pdf="ky_yeu_tw.pdf">THAM LUẬN ĐÓNG GÓP TW</button>
             </div>
         </div>
     </div>
