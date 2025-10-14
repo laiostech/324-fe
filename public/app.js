@@ -108,11 +108,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const title = documentTitles[pdfFile] || 'Văn bản';
         pdfTitle.textContent = title;
 
-        // Sử dụng view=FitV để fit theo chiều dọc, đảm bảo tiêu đề không bị cắt
-        // zoom=auto để tự động điều chỉnh tỷ lệ phù hợp
         const encoded = encodeURI(pdfFile);
-        const viewerUrl = `${encoded}#view=FitV&toolbar=0&navpanes=0&statusbar=0&zoom=auto`;
-        pdfFrame.src = viewerUrl;
+        const mobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth < 768;
+
+        if (mobile) {
+            // Trên điện thoại: mở tab mới để dùng viewer gốc (cuộn nhiều trang, pinch-zoom tốt hơn)
+            const mobileUrl = `${encoded}#page=1&view=Fit`;
+            window.open(mobileUrl, '_blank');
+            return;
+        }
+
+        // Trên máy tính: hiển thị trong modal iframe, fit toàn trang, ẩn chrome của viewer
+        const desktopUrl = `${encoded}#page=1&view=Fit&toolbar=0&navpanes=0&statusbar=0`;
+        pdfFrame.src = desktopUrl;
         pdfModal.classList.add('active');
         document.body.style.overflow = 'hidden';
         console.log('📄 Đang mở:', title);
