@@ -87,10 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const title = documentTitles[pdfFile] || 'Văn bản';
         pdfTitle.textContent = title;
 
-        // Cải thiện hiển thị PDF: fit chiều rộng và giữ zoom thích hợp cho mobile
-        // Sử dụng view=FitH để fit theo chiều ngang, tốt hơn cho mobile
+        // Sử dụng view=FitV để fit theo chiều dọc, đảm bảo tiêu đề không bị cắt
+        // zoom=auto để tự động điều chỉnh tỷ lệ phù hợp
         const encoded = encodeURI(pdfFile);
-        const viewerUrl = `${encoded}#view=FitH&toolbar=0&navpanes=0&statusbar=0&zoom=page-width`;
+        const viewerUrl = `${encoded}#view=FitV&toolbar=0&navpanes=0&statusbar=0&zoom=auto`;
         pdfFrame.src = viewerUrl;
         pdfModal.classList.add('active');
         document.body.style.overflow = 'hidden';
