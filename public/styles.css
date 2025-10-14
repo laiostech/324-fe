@@ -5,28 +5,37 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    min-height: 100vh;
-}
-
-/* Background Wrapper - Sử dụng ảnh background.png */
-.background-wrapper {
+    width: 100%;
     min-height: 100vh;
     background-image: url('background.png');
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
-    background-attachment: scroll;
+    background-attachment: fixed;
+}
+
+/* Background Wrapper - Container cho nội dung */
+.background-wrapper {
+    min-height: 100vh;
+    width: 100%;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 20px;
-    padding-top: 120px;  /* ← VỊ TRÍ VIDEO: Tăng số này để video cao hơn (VD: 220px, 250px) */
+    padding: 12px;
+    padding-top: 10vh;
+    padding-bottom: 20px;
+    box-sizing: border-box;
 }
 
 /* Video Container - Khung trắng chữ nhật */
@@ -62,16 +71,97 @@ body {
 
 /* Responsive */
 
+/* Mobile: Điều chỉnh layout cho điện thoại */
+@media (max-width: 767px) {
+    body {
+        background-attachment: scroll;  /* Tốt hơn cho mobile */
+    }
+
+    .background-wrapper {
+        padding: 12px;
+        padding-top: 8vh;
+        padding-bottom: 15px;
+    }
+
+    .video-container {
+        padding: 2px;
+        max-width: 100%;
+    }
+    
+    .document-buttons {
+        gap: 10px;
+        margin-top: 16px;
+    }
+    
+    .doc-btn {
+        padding: 12px 14px;
+        font-size: 0.9rem;
+    }
+}
+
+/* iPhone SE và màn hình nhỏ tương tự */
+@media (max-width: 380px) {
+    .background-wrapper {
+        padding: 10px;
+        padding-top: 6vh;
+        padding-bottom: 10px;
+    }
+    
+    .video-container {
+        padding: 2px;
+    }
+    
+    .document-buttons {
+        gap: 8px;
+        margin-top: 12px;
+    }
+    
+    .doc-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .doc-icon {
+        font-size: 1.3rem;
+    }
+}
+
+/* Landscape Mode cho Mobile */
+@media (max-width: 767px) and (orientation: landscape) {
+    .background-wrapper {
+        padding: 8px;
+        padding-top: 5vh;
+        padding-bottom: 8px;
+    }
+
+    .video-container {
+        padding: 2px;
+        max-width: 70%;
+    }
+    
+    .document-buttons {
+        gap: 8px;
+        margin-top: 10px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .doc-btn {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+}
+
 /* Tablet */
 @media (min-width: 768px) {
     .background-wrapper {
         padding: 30px;
-        padding-top: 220px;  /* ← VỊ TRÍ VIDEO TABLET */
+        padding-top: 15vh;
+        padding-bottom: 30px;
     }
 
     .video-container {
-        max-width: 800px;
-        padding: 5px;  /* ← VIỀN TRẮNG TABLET */
+        max-width: 700px;
+        padding: 4px;
     }
 }
 
@@ -79,68 +169,39 @@ body {
 @media (min-width: 1024px) {
     .background-wrapper {
         padding: 40px;
-        padding-top: 240px;  /* ← VỊ TRÍ VIDEO DESKTOP */
+        padding-top: 18vh;
+        padding-bottom: 40px;
     }
 
     .video-container {
-        max-width: 900px;
-        padding: 6px;  /* ← VIỀN TRẮNG DESKTOP */
+        max-width: 800px;
+        padding: 5px;
     }
 }
 
 /* Large Desktop */
 @media (min-width: 1440px) {
     .background-wrapper {
-        padding-top: 260px;  /* ← VỊ TRÍ VIDEO LARGE DESKTOP */
+        padding-top: 20vh;
     }
 
     .video-container {
-        max-width: 1000px;
-        padding: 8px;  /* ← VIỀN TRẮNG LARGE DESKTOP */
+        max-width: 900px;
+        padding: 6px;
     }
 }
 
-/* Landscape Mode cho Mobile */
-@media (max-width: 767px) and (orientation: landscape) {
-    .background-wrapper {
-        padding: 10px;
-        padding-top: 140px;  /* ← VỊ TRÍ VIDEO LANDSCAPE */
-    }
-
-    .video-container {
-        padding: 3px;  /* ← VIỀN TRẮNG LANDSCAPE */
-        max-width: 600px;
-    }
-}
-
-/* Small Mobile */
-@media (max-width: 375px) {
-    .background-wrapper {
-        padding-top: 180px;  /* ← VỊ TRÍ VIDEO SMALL MOBILE */
-    }
-
-    .video-container {
-        padding: 3px;  /* ← VIỀN TRẮNG SMALL MOBILE */
-    }
-}
-
-/* Background responsive */
-@media (max-width: 767px) {
-    .background-wrapper {
-        background-size: auto 100%;
-        background-position: center top;
-    }
-}
-
-/* Document Buttons - Nằm dưới video 60px */
+/* Document Buttons - Nằm dưới video */
 .document-buttons {
     display: grid;
     grid-template-columns: 1fr;  /* Mobile: 1 cột */
-    gap: 16px;  /* ← KHOẢNG CÁCH GIỮA CÁC NÚT */
+    gap: 12px;
     width: 100%;
     max-width: 700px;
-    margin-top: 80px;  /* ← KHOẢNG CÁCH DƯỚI VIDEO: 60px */
+    margin-top: 20px;
+    margin-bottom: 15px;
     z-index: 10;
+    box-sizing: border-box;
 }
 
 .doc-btn {
@@ -289,22 +350,25 @@ body {
     .document-buttons {
         grid-template-columns: repeat(2, 1fr);  /* Tablet: 2 cột */
         max-width: 800px;
-        gap: 20px;  /* ← TABLET GAP: Khoảng cách giữa các nút */
+        gap: 16px;
+        margin-top: 32px;
     }
 
     .doc-btn {
-        padding: 18px 24px;  /* ← TABLET CHIỀU CAO NÚT */
+        padding: 16px 20px;
     }
 }
 
 @media (min-width: 1024px) {
     .document-buttons {
         max-width: 900px;
+        gap: 18px;
+        margin-top: 40px;
     }
 
     .doc-btn {
-        font-size: 1.1rem;  /* ← DESKTOP CỠ CHỮ */
-        padding: 20px 28px;  /* ← DESKTOP CHIỀU CAO NÚT */
+        font-size: 1.05rem;
+        padding: 18px 24px;
     }
 }
 
