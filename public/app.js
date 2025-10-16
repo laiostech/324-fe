@@ -73,7 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'van_ban_qutw.pdf': 'VĂN BẢN QUTW, BQP',
         'bao_cao_tong_ket_quan_khu.pdf': 'BÁO CÁO TỔNG KẾT QUÂN KHU',
         'bao_cao_tong_ket_su_doan.pdf': 'BÁO CÁO TỔNG KẾT SƯ ĐOÀN',
-        'ky_yeu.pdf': 'KỶ YẾU',
+        'ky_yeu.pdf': 'Ý KIẾN THAM LUẬN',
+        'chuong_trinh_hanh_dong.pdf': 'CHƯƠNG TRÌNH HÀNH ĐỘNG',
         'su_doan/su_doan_1.pdf': 'VĂN BẢN 1 - THAM LUẬN SƯ ĐOÀN',
         'su_doan/su_doan_2.pdf': 'VĂN BẢN 2 - THAM LUẬN SƯ ĐOÀN',
         'su_doan/su_doan_3.pdf': 'VĂN BẢN 3 - THAM LUẬN SƯ ĐOÀN',
@@ -85,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'trung_uong/tw_1.pdf': 'VĂN BẢN 1 - THAM LUẬN TRUNG ƯƠNG',
         'trung_uong/tw_2.pdf': 'VĂN BẢN 2 - THAM LUẬN TRUNG ƯƠNG',
         'trung_uong/tw_3.pdf': 'VĂN BẢN 3 - THAM LUẬN TRUNG ƯƠNG',
-        'trung_uong/tw_4.pdf': 'VĂN BẢN 4 - THAM LUẬN TRUNG ƯƠNG'
+        
     };
 
     // Xử lý click vào nút văn bản
@@ -93,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             const pdfFile = button.getAttribute('data-pdf');
 
-            // Mở KỶ YẾU submenu
+            // Mở Ý KIẾN THAM LUẬN submenu
             if (pdfFile === 'ky_yeu.pdf') {
                 kyYeuSubmenu.classList.add('active');
                 document.body.style.overflow = 'hidden';
