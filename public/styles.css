@@ -11,7 +11,7 @@ html {
 }
 
 :root {
-    --hero-offset: 50px; /* adjust this to push content further below the top of the background */
+    --hero-offset: 130px; /* adjust this to push content further below the top of the background */
 }
 
 body {
