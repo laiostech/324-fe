@@ -20,7 +20,7 @@ body {
     overflow-x: hidden;
     width: 100%;
     min-height: 100vh;
-    background-image: url('background.png');
+    background-image: url('Slide2.JPG');
     background-size: cover;
     background-position: top center; /* keep header artwork visible, crop sides/bottom instead */
     background-repeat: no-repeat;

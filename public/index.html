@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Hội nghị tổng kết hoạt động CTĐ và PTTN Sư Đoàn 324">
+    <meta name="description" content="Công tác Quần chúng Quân khu 4">
     <meta name="theme-color" content="#0033a0">
-    <title>Hội nghị Sư Đoàn 324</title>
+    <title>Công tác Quần chúng Quân khu 4</title>
+    </title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,7 +17,7 @@
                 <iframe
                     id="youtubeVideo"
                     src="https://www.youtube.com/embed/FfWQOxWCmuY?rel=0&modestbranding=1&showinfo=0&controls=1&autoplay=1&playsinline=1&enablejsapi=1"
-                    title="Hội nghị Sư Đoàn 324"
+                    title="Công tác Quần chúng Quân khu 4"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen>
@@ -30,21 +31,17 @@
                 <span class="doc-icon">📄</span>
                 <span class="doc-text">CHƯƠNG TRÌNH HỘI NGHỊ</span>
             </button>
-            <button class="doc-btn" data-pdf="van_ban_qutw.pdf">
+            <button class="doc-btn" data-pdf="du_thao_bao_cao_tong_ket_quan_khu.pdf">
                 <span class="doc-icon">📄</span>
-                <span class="doc-text">VĂN BẢN QUTW, BQP</span>
+                <span class="doc-text">DỰ THẢO BÁO CÁO TỔNG KẾT QUÂN KHU</span>
             </button>
-            <button class="doc-btn" data-pdf="bao_cao_tong_ket_quan_khu.pdf">
+            <button class="doc-btn" data-submenu="vanKienTongCucChinhTri">
                 <span class="doc-icon">📄</span>
-                <span class="doc-text">BÁO CÁO TỔNG KẾT QUÂN KHU</span>
+                <span class="doc-text">VĂN KIỆN TỔNG CỤC CHÍNH TRỊ</span>
             </button>
-            <button class="doc-btn" data-pdf="bao_cao_tong_ket_su_doan.pdf">
+            <button class="doc-btn" data-submenu="vanKienTrungUong">
                 <span class="doc-icon">📄</span>
-                <span class="doc-text">BÁO CÁO TỔNG KẾT SƯ ĐOÀN</span>
-            </button>
-            <button class="doc-btn" data-pdf="ky_yeu.pdf">
-                <span class="doc-icon">📄</span>
-                <span class="doc-text">Ý KIẾN THAM LUẬN</span>
+                <span class="doc-text">VĂN KIỆN TRUNG ƯƠNG</span>
             </button>
             <button class="doc-btn" data-pdf="chuong_trinh_hanh_dong.pdf">
                 <span class="doc-icon">📄</span>
@@ -66,64 +63,60 @@
         </div>
     </div>
 
-    <!-- KY YEU Submenu Modal -->
-    <div class="submenu-modal" id="kyYeuSubmenu">
+    <!-- VAN KIEN TONG CUC CHINH TRI Submenu Modal -->
+    <div class="submenu-modal" id="vanKienTongCucChinhTriSubmenu">
         <div class="submenu-content">
             <div class="submenu-header">
-                <h3 class="submenu-title">Ý KIẾN THAM LUẬN</h3>
-                <button class="submenu-close" id="closeSubmenu">&times;</button>
+                <h3 class="submenu-title">VĂN KIỆN TỔNG CỤC CHÍNH TRỊ</h3>
+                <button class="submenu-close" id="closeVanKienTongCucChinhTriSubmenu">&times;</button>
             </div>
             <div class="submenu-body">
-                <button class="submenu-btn" data-submenu="suDoan">THAM LUẬN ĐÓNG GÓP SƯ ĐOÀN</button>
-                <button class="submenu-btn" data-submenu="quanKhu">THAM LUẬN ĐÓNG GÓP QUÂN KHU</button>
-                <button class="submenu-btn" data-submenu="trungUong">THAM LUẬN ĐÓNG GÓP TW</button>
+                <button class="submenu-btn" data-pdf="van_kien_tong_cuc_chinh_tri/du_thao_doan_tncs_ho_chi_minh.pdf">DỰ THẢO ĐOÀN TNCS HỒ CHÍ MINH</button>
+                <button class="submenu-btn" data-pdf="van_kien_tong_cuc_chinh_tri/du_thao_phu_nu_quan_doi.pdf">DỰ THẢO PHỤ NỮ QUÂN ĐỘI</button>
+                <button class="submenu-btn" data-pdf="van_kien_tong_cuc_chinh_tri/du_thao_cong_doan_quan_doi.pdf">DỰ THẢO CÔNG ĐOÀN QUÂN ĐỘI</button>
             </div>
         </div>
     </div>
 
-    <!-- SU DOAN Submenu Modal -->
-    <div class="submenu-modal" id="suDoanSubmenu">
+    <!-- VAN KIEN TRUNG UONG Submenu Modal -->
+    <div class="submenu-modal" id="vanKienTrungUongSubmenu">
         <div class="submenu-content">
             <div class="submenu-header">
-                <h3 class="submenu-title">THAM LUẬN ĐÓNG GÓP SƯ ĐOÀN</h3>
-                <button class="submenu-close" id="closeSuDoanSubmenu">&times;</button>
+                <h3 class="submenu-title">VĂN KIỆN TRUNG ƯƠNG</h3>
+                <button class="submenu-close" id="closeVanKienTrungUongSubmenu">&times;</button>
             </div>
             <div class="submenu-body">
-                <button class="submenu-btn" data-pdf="su_doan/su_doan_1.pdf">VĂN BẢN 1</button>
-                <button class="submenu-btn" data-pdf="su_doan/su_doan_2.pdf">VĂN BẢN 2</button>
-                <button class="submenu-btn" data-pdf="su_doan/su_doan_3.pdf">VĂN BẢN 3</button>
-                <button class="submenu-btn" data-pdf="su_doan/su_doan_4.pdf">VĂN BẢN 4</button>
-                <button class="submenu-btn" data-pdf="su_doan/su_doan_5.pdf">VĂN BẢN 5</button>
+                <button class="submenu-btn" data-submenu="vanKienHoiLhpnVietNam">VĂN KIỆN HỘI LHPN VIỆT NAM</button>
+                <button class="submenu-btn" data-submenu="vanKienDoanTncsHoChiMinh">VĂN KIỆN ĐOÀN TNCS HỒ CHÍ MINH</button>
             </div>
         </div>
     </div>
 
-    <!-- QUAN KHU Submenu Modal -->
-    <div class="submenu-modal" id="quanKhuSubmenu">
+    <!-- VAN KIEN HOI LHPN VIET NAM Submenu Modal -->
+    <div class="submenu-modal" id="vanKienHoiLhpnVietNamSubmenu">
         <div class="submenu-content">
             <div class="submenu-header">
-                <h3 class="submenu-title">THAM LUẬN ĐÓNG GÓP QUÂN KHU</h3>
-                <button class="submenu-close" id="closeQuanKhuSubmenu">&times;</button>
+                <h3 class="submenu-title">VĂN KIỆN HỘI LHPN VIỆT NAM</h3>
+                <button class="submenu-close" id="closeVanKienHoiLhpnVietNamSubmenu">&times;</button>
             </div>
             <div class="submenu-body">
-                <button class="submenu-btn" data-pdf="quan_khu/quan_khu_1.pdf">VĂN BẢN 1</button>
-                <button class="submenu-btn" data-pdf="quan_khu/quan_khu_2.pdf">VĂN BẢN 2</button>
-                <button class="submenu-btn" data-pdf="quan_khu/quan_khu_3.pdf">VĂN BẢN 3</button>
+                <button class="submenu-btn" data-pdf="van_kien_trung_uong/van_kien_hoi_lhpn_viet_nam/3.pdf">DỰ THẢO BÁO CÁO CHÍNH TRỊ CỦA BCH TW HỘI LHPN VN KHÓA XIII TRÌNH ĐHĐB PN TOÀN QUỐC LẦN THỨ XIV</button>
+                <button class="submenu-btn" data-pdf="van_kien_trung_uong/van_kien_hoi_lhpn_viet_nam/4.pdf">DỰ THẢO BÁO CÁO TỔNG KẾT THỰC HIỆN ĐIỀU LỆ HỘI LHPNVN LẦN THỨ XIII VÀ ĐỀ XUẤT SỬA ĐỔI BỔ SUNG</button>
+                <button class="submenu-btn" data-pdf="van_kien_trung_uong/van_kien_hoi_lhpn_viet_nam/5.pdf">DỰ THẢO ĐIỀU LỆ HỘI LHPN VIỆT NAM</button>
             </div>
         </div>
     </div>
 
-    <!-- TRUNG UONG Submenu Modal -->
-    <div class="submenu-modal" id="trungUongSubmenu">
+    <!-- VAN KIEN DOAN TNCS HO CHI MINH Submenu Modal -->
+    <div class="submenu-modal" id="vanKienDoanTncsHoChiMinhSubmenu">
         <div class="submenu-content">
             <div class="submenu-header">
-                <h3 class="submenu-title">THAM LUẬN ĐÓNG GÓP TRUNG ƯƠNG</h3>
-                <button class="submenu-close" id="closeTrungUongSubmenu">&times;</button>
+                <h3 class="submenu-title">VĂN KIỆN ĐOÀN TNCS HỒ CHÍ MINH</h3>
+                <button class="submenu-close" id="closeVanKienDoanTncsHoChiMinhSubmenu">&times;</button>
             </div>
             <div class="submenu-body">
-                <button class="submenu-btn" data-pdf="trung_uong/tw_1.pdf">VĂN BẢN 1</button>
-                <button class="submenu-btn" data-pdf="trung_uong/tw_2.pdf">VĂN BẢN 2</button>
-                <button class="submenu-btn" data-pdf="trung_uong/tw_3.pdf">VĂN BẢN 3</button>
+                <button class="submenu-btn" data-pdf="van_kien_trung_uong/van_kien_doan_tncs_ho_chi_minh/1.pdf">DỰ THẢO BÁO CÁO TỔNG KẾT KẾT QUẢ THỰC HIỆN ĐIỀU LỆ ĐOÀN TNCS HCM KHOÁ XII</button>
+                <button class="submenu-btn" data-pdf="van_kien_trung_uong/van_kien_doan_tncs_ho_chi_minh/2.pdf">BÁO CÁO CHÍNH TRỊ CỦA BAN CHẤP HÀNH TRUNG ƯƠNG ĐOÀN TNCS HỒ CHÍ MINH</button>
             </div>
         </div>
     </div>

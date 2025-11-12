@@ -55,53 +55,58 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeModal = document.getElementById('closeModal');
 
     // Submenus
-    const kyYeuSubmenu = document.getElementById('kyYeuSubmenu');
-    const closeSubmenu = document.getElementById('closeSubmenu');
+    const vanKienTongCucChinhTriSubmenu = document.getElementById('vanKienTongCucChinhTriSubmenu');
+    const closeVanKienTongCucChinhTriSubmenu = document.getElementById('closeVanKienTongCucChinhTriSubmenu');
 
-    const suDoanSubmenu = document.getElementById('suDoanSubmenu');
-    const closeSuDoanSubmenu = document.getElementById('closeSuDoanSubmenu');
+    const vanKienTrungUongSubmenu = document.getElementById('vanKienTrungUongSubmenu');
+    const closeVanKienTrungUongSubmenu = document.getElementById('closeVanKienTrungUongSubmenu');
 
-    const quanKhuSubmenu = document.getElementById('quanKhuSubmenu');
-    const closeQuanKhuSubmenu = document.getElementById('closeQuanKhuSubmenu');
+    const vanKienHoiLhpnVietNamSubmenu = document.getElementById('vanKienHoiLhpnVietNamSubmenu');
+    const closeVanKienHoiLhpnVietNamSubmenu = document.getElementById('closeVanKienHoiLhpnVietNamSubmenu');
 
-    const trungUongSubmenu = document.getElementById('trungUongSubmenu');
-    const closeTrungUongSubmenu = document.getElementById('closeTrungUongSubmenu');
+    const vanKienDoanTncsHoChiMinhSubmenu = document.getElementById('vanKienDoanTncsHoChiMinhSubmenu');
+    const closeVanKienDoanTncsHoChiMinhSubmenu = document.getElementById('closeVanKienDoanTncsHoChiMinhSubmenu');
 
     // Mapping tên văn bản
     const documentTitles = {
         'chuong_trinh_hoi_nghi.pdf': 'CHƯƠNG TRÌNH HỘI NGHỊ',
-        'van_ban_qutw.pdf': 'VĂN BẢN QUTW, BQP',
+        'du_thao_bao_cao_tong_ket_quan_khu.pdf': 'DỰ THẢO BÁO CÁO TỔNG KẾT QUÂN KHU',
         'bao_cao_tong_ket_quan_khu.pdf': 'BÁO CÁO TỔNG KẾT QUÂN KHU',
         'bao_cao_tong_ket_su_doan.pdf': 'BÁO CÁO TỔNG KẾT SƯ ĐOÀN',
-        'ky_yeu.pdf': 'Ý KIẾN THAM LUẬN',
         'chuong_trinh_hanh_dong.pdf': 'CHƯƠNG TRÌNH HÀNH ĐỘNG',
-        'su_doan/su_doan_1.pdf': 'VĂN BẢN 1 - THAM LUẬN SƯ ĐOÀN',
-        'su_doan/su_doan_2.pdf': 'VĂN BẢN 2 - THAM LUẬN SƯ ĐOÀN',
-        'su_doan/su_doan_3.pdf': 'VĂN BẢN 3 - THAM LUẬN SƯ ĐOÀN',
-        'su_doan/su_doan_4.pdf': 'VĂN BẢN 4 - THAM LUẬN SƯ ĐOÀN',
-        'su_doan/su_doan_5.pdf': 'VĂN BẢN 5 - THAM LUẬN SƯ ĐOÀN',
-        'quan_khu/quan_khu_1.pdf': 'VĂN BẢN 1 - THAM LUẬN QUÂN KHU',
-        'quan_khu/quan_khu_2.pdf': 'VĂN BẢN 2 - THAM LUẬN QUÂN KHU',
-        'quan_khu/quan_khu_3.pdf': 'VĂN BẢN 3 - THAM LUẬN QUÂN KHU',
-        'trung_uong/tw_1.pdf': 'VĂN BẢN 1 - THAM LUẬN TRUNG ƯƠNG',
-        'trung_uong/tw_2.pdf': 'VĂN BẢN 2 - THAM LUẬN TRUNG ƯƠNG',
-        'trung_uong/tw_3.pdf': 'VĂN BẢN 3 - THAM LUẬN TRUNG ƯƠNG',
-        
+        'van_kien_tong_cuc_chinh_tri/du_thao_doan_tncs_ho_chi_minh.pdf': 'DỰ THẢO ĐOÀN TNCS HỒ CHÍ MINH',
+        'van_kien_tong_cuc_chinh_tri/du_thao_phu_nu_quan_doi.pdf': 'DỰ THẢO PHỤ NỮ QUÂN ĐỘI',
+        'van_kien_tong_cuc_chinh_tri/du_thao_cong_doan_quan_doi.pdf': 'DỰ THẢO CÔNG ĐOÀN QUÂN ĐỘI',
+        'van_kien_trung_uong/van_kien_hoi_lhpn_viet_nam/3.pdf': 'DỰ THẢO BÁO CÁO CHÍNH TRỊ CỦA BCH TW HỘI LHPN VN KHÓA XIII TRÌNH ĐHĐB PN TOÀN QUỐC LẦN THỨ XIV',
+        'van_kien_trung_uong/van_kien_hoi_lhpn_viet_nam/4.pdf': 'DỰ THẢO BÁO CÁO TỔNG KẾT THỰC HIỆN ĐIỀU LỆ HỘI LHPNVN LẦN THỨ XIII VÀ ĐỀ XUẤT SỬA ĐỔI BỔ SUNG',
+        'van_kien_trung_uong/van_kien_hoi_lhpn_viet_nam/5.pdf': 'DỰ THẢO ĐIỀU LỆ HỘI LHPN VIỆT NAM',
+        'van_kien_trung_uong/van_kien_doan_tncs_ho_chi_minh/1.pdf': 'DỰ THẢO BÁO CÁO TỔNG KẾT KẾT QUẢ THỰC HIỆN ĐIỀU LỆ ĐOÀN TNCS HCM KHOÁ XII',
+        'van_kien_trung_uong/van_kien_doan_tncs_ho_chi_minh/2.pdf': 'BÁO CÁO CHÍNH TRỊ CỦA BAN CHẤP HÀNH TRUNG ƯƠNG ĐOÀN TNCS HỒ CHÍ MINH',
     };
 
     // Xử lý click vào nút văn bản
     pdfButtons.forEach(button => {
         button.addEventListener('click', () => {
             const pdfFile = button.getAttribute('data-pdf');
+            const submenu = button.getAttribute('data-submenu');
 
-            // Mở Ý KIẾN THAM LUẬN submenu
-            if (pdfFile === 'ky_yeu.pdf') {
-                kyYeuSubmenu.classList.add('active');
-                document.body.style.overflow = 'hidden';
+            if (submenu) {
+                switch(submenu) {
+                    case 'vanKienTongCucChinhTri':
+                        vanKienTongCucChinhTriSubmenu.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                        break;
+                    case 'vanKienTrungUong':
+                        vanKienTrungUongSubmenu.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                        break;
+                }
                 return;
             }
 
-            openPdf(pdfFile);
+            if (pdfFile) {
+                openPdf(pdfFile);
+            }
         });
     });
 
@@ -114,13 +119,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (mobile) {
             // Trên điện thoại: mở tab mới để dùng viewer gốc (cuộn nhiều trang, pinch-zoom tốt hơn)
-            const mobileUrl = `${encoded}#page=1&view=Fit`;
+            // Sử dụng zoom=page-fit để đảm bảo bắt đầu từ trang 1
+            const mobileUrl = `${encoded}#zoom=page-fit&page=1`;
             window.open(mobileUrl, '_blank');
             return;
         }
 
         // Trên máy tính: hiển thị trong modal iframe, fit toàn trang, ẩn chrome của viewer
-        const desktopUrl = `${encoded}#page=1&view=Fit&toolbar=0&navpanes=0&statusbar=0`;
+        // Sử dụng zoom=page-fit&page=1 để đảm bảo luôn bắt đầu từ trang đầu tiên
+        const desktopUrl = `${encoded}#zoom=page-fit&page=1&toolbar=0&navpanes=0&statusbar=0`;
         pdfFrame.src = desktopUrl;
         pdfModal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -143,66 +150,66 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Close KY YEU submenu
-    function closeKyYeuSubmenu() {
-        kyYeuSubmenu.classList.remove('active');
+    // Close VAN KIEN TONG CUC CHINH TRI submenu
+    function closeVanKienTongCucChinhTriSubmenuFunc() {
+        vanKienTongCucChinhTriSubmenu.classList.remove('active');
         document.body.style.overflow = '';
     }
 
-    // Close SU DOAN submenu
-    function closeSuDoanSubmenuFunc() {
-        suDoanSubmenu.classList.remove('active');
+    // Close VAN KIEN TRUNG UONG submenu
+    function closeVanKienTrungUongSubmenuFunc() {
+        vanKienTrungUongSubmenu.classList.remove('active');
         document.body.style.overflow = '';
     }
 
-    // Close QUAN KHU submenu
-    function closeQuanKhuSubmenuFunc() {
-        quanKhuSubmenu.classList.remove('active');
+    // Close VAN KIEN HOI LHPN VIET NAM submenu
+    function closeVanKienHoiLhpnVietNamSubmenuFunc() {
+        vanKienHoiLhpnVietNamSubmenu.classList.remove('active');
         document.body.style.overflow = '';
     }
 
-    // Close TRUNG UONG submenu
-    function closeTrungUongSubmenuFunc() {
-        trungUongSubmenu.classList.remove('active');
+    // Close VAN KIEN DOAN TNCS HO CHI MINH submenu
+    function closeVanKienDoanTncsHoChiMinhSubmenuFunc() {
+        vanKienDoanTncsHoChiMinhSubmenu.classList.remove('active');
         document.body.style.overflow = '';
     }
 
     // Close all submenus function
     function closeAllSubmenus() {
-        closeKyYeuSubmenu();
-        closeSuDoanSubmenuFunc();
-        closeQuanKhuSubmenuFunc();
-        closeTrungUongSubmenuFunc();
+        closeVanKienTongCucChinhTriSubmenuFunc();
+        closeVanKienTrungUongSubmenuFunc();
+        closeVanKienHoiLhpnVietNamSubmenuFunc();
+        closeVanKienDoanTncsHoChiMinhSubmenuFunc();
     }
 
     // Event listeners for close buttons
-    closeSubmenu?.addEventListener('click', closeKyYeuSubmenu);
-    closeSuDoanSubmenu?.addEventListener('click', closeSuDoanSubmenuFunc);
-    closeQuanKhuSubmenu?.addEventListener('click', closeQuanKhuSubmenuFunc);
-    closeTrungUongSubmenu?.addEventListener('click', closeTrungUongSubmenuFunc);
+    closeVanKienTongCucChinhTriSubmenu?.addEventListener('click', closeVanKienTongCucChinhTriSubmenuFunc);
+    closeVanKienTrungUongSubmenu?.addEventListener('click', closeVanKienTrungUongSubmenuFunc);
+    closeVanKienHoiLhpnVietNamSubmenu?.addEventListener('click', closeVanKienHoiLhpnVietNamSubmenuFunc);
+    closeVanKienDoanTncsHoChiMinhSubmenu?.addEventListener('click', closeVanKienDoanTncsHoChiMinhSubmenuFunc);
 
     // Event listeners for clicking outside
-    kyYeuSubmenu?.addEventListener('click', (e) => {
-        if (e.target === kyYeuSubmenu) {
-            closeKyYeuSubmenu();
+    vanKienTongCucChinhTriSubmenu?.addEventListener('click', (e) => {
+        if (e.target === vanKienTongCucChinhTriSubmenu) {
+            closeVanKienTongCucChinhTriSubmenuFunc();
         }
     });
 
-    suDoanSubmenu?.addEventListener('click', (e) => {
-        if (e.target === suDoanSubmenu) {
-            closeSuDoanSubmenuFunc();
+    vanKienTrungUongSubmenu?.addEventListener('click', (e) => {
+        if (e.target === vanKienTrungUongSubmenu) {
+            closeVanKienTrungUongSubmenuFunc();
         }
     });
 
-    quanKhuSubmenu?.addEventListener('click', (e) => {
-        if (e.target === quanKhuSubmenu) {
-            closeQuanKhuSubmenuFunc();
+    vanKienHoiLhpnVietNamSubmenu?.addEventListener('click', (e) => {
+        if (e.target === vanKienHoiLhpnVietNamSubmenu) {
+            closeVanKienHoiLhpnVietNamSubmenuFunc();
         }
     });
 
-    trungUongSubmenu?.addEventListener('click', (e) => {
-        if (e.target === trungUongSubmenu) {
-            closeTrungUongSubmenuFunc();
+    vanKienDoanTncsHoChiMinhSubmenu?.addEventListener('click', (e) => {
+        if (e.target === vanKienDoanTncsHoChiMinhSubmenu) {
+            closeVanKienDoanTncsHoChiMinhSubmenuFunc();
         }
     });
 
@@ -221,16 +228,12 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (submenu) {
                 // Nếu có data-submenu, mở submenu tương ứng
                 switch(submenu) {
-                    case 'suDoan':
-                        suDoanSubmenu.classList.add('active');
+                    case 'vanKienHoiLhpnVietNam':
+                        vanKienHoiLhpnVietNamSubmenu.classList.add('active');
                         document.body.style.overflow = 'hidden';
                         break;
-                    case 'quanKhu':
-                        quanKhuSubmenu.classList.add('active');
-                        document.body.style.overflow = 'hidden';
-                        break;
-                    case 'trungUong':
-                        trungUongSubmenu.classList.add('active');
+                    case 'vanKienDoanTncsHoChiMinh':
+                        vanKienDoanTncsHoChiMinhSubmenu.classList.add('active');
                         document.body.style.overflow = 'hidden';
                         break;
                 }
@@ -243,14 +246,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape') {
             if (pdfModal.classList.contains('active')) {
                 closePdfModal();
-            } else if (kyYeuSubmenu.classList.contains('active')) {
-                closeKyYeuSubmenu();
-            } else if (suDoanSubmenu.classList.contains('active')) {
-                closeSuDoanSubmenuFunc();
-            } else if (quanKhuSubmenu.classList.contains('active')) {
-                closeQuanKhuSubmenuFunc();
-            } else if (trungUongSubmenu.classList.contains('active')) {
-                closeTrungUongSubmenuFunc();
+            } else if (vanKienDoanTncsHoChiMinhSubmenu.classList.contains('active')) {
+                closeVanKienDoanTncsHoChiMinhSubmenuFunc();
+            } else if (vanKienHoiLhpnVietNamSubmenu.classList.contains('active')) {
+                closeVanKienHoiLhpnVietNamSubmenuFunc();
+            } else if (vanKienTrungUongSubmenu.classList.contains('active')) {
+                closeVanKienTrungUongSubmenuFunc();
+            } else if (vanKienTongCucChinhTriSubmenu.classList.contains('active')) {
+                closeVanKienTongCucChinhTriSubmenuFunc();
             }
         }
     });
