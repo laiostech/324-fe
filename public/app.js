@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
         'du_thao_bao_cao_tong_ket_quan_khu.pdf': 'DỰ THẢO BÁO CÁO TỔNG KẾT QUÂN KHU',
         'bao_cao_tong_ket_quan_khu.pdf': 'BÁO CÁO TỔNG KẾT QUÂN KHU',
         'bao_cao_tong_ket_su_doan.pdf': 'BÁO CÁO TỔNG KẾT SƯ ĐOÀN',
-        'chuong_trinh_hanh_dong.pdf': 'CHƯƠNG TRÌNH HÀNH ĐỘNG',
         'van_kien_tong_cuc_chinh_tri/du_thao_doan_tncs_ho_chi_minh.pdf': 'DỰ THẢO ĐOÀN TNCS HỒ CHÍ MINH',
         'van_kien_tong_cuc_chinh_tri/du_thao_phu_nu_quan_doi.pdf': 'DỰ THẢO PHỤ NỮ QUÂN ĐỘI',
         'van_kien_tong_cuc_chinh_tri/du_thao_cong_doan_quan_doi.pdf': 'DỰ THẢO CÔNG ĐOÀN QUÂN ĐỘI',
